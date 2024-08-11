@@ -1,0 +1,11 @@
+Bài 5: Sermantic Verioning là gì? Lưu ý quan trọng về bộ code base
+
+Phiên bản của phần mềm dử dụng: A1.A2.A3
+    + A1: là major version, cập nhật rất lớn, làm break API
+    + A2: là minor version, cập nhật tầm trung, không làm break API
+    + A3: là patches, chỉ là cập nhật vài bug nhỏ
+
+Ở khòa này sẽ dùng các phiên bản sau đây:
+    + Node: 18.16.0
+
+Dùng bộ code base hiện đã tải về
