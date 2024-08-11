@@ -1,0 +1,13 @@
+Bài 4: JSX là gì? Hiểu tường tận về JSX
+link ytb: https://www.youtube.com/watch?v=Vr64L3wZvl4&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=8
+
+link doc: https://react.dev/learn/writing-markup-with-jsx
+JSX là 1 phần mở rộng cú pháp để có thể viết HTML ngay bên trong file JS
+Viết chung js và html vào 1 nơi, gọi là components - thành phần
+
+JSX và React là 2 thứ riêng biệt
+cần bọc nhiều thẻ html vào 1 thẻ root, như div
+hoặc dùng react fragment <> </>
+nếu dùng biến trong jsx thì cần bọc trong {}
+cú pháp {{}} là của 1 object viết bằng jsx
+
