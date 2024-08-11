@@ -1,0 +1,10 @@
+Bài 3: Vite - Hiểu toàn bộ Code Base ban đầu - Push code lên GitHub
+link ytb: https://www.youtube.com/watch?v=pXJb6ehTV0o&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=7
+
+Dùng câu lệnh yarn create vite để tạo dự án Base
+    + đặt tên dự án
+    + chọn framework: react
+    + chọn biến thể ngôn ngữ: JavaScript + SWC
+Tạo Repo GitHub và push code lên
+Đọc hiểu code base ban đầu: 
+    + 
