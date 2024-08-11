@@ -1,0 +1,13 @@
+Bài 2: Vite, Create React App và NextJS - Lựa chọn cái nào?
+link ytb: https://www.youtube.com/watch?v=ue4xeLB33ig&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=6
+
+Create React App: là 1 build tool, tuy nhiên được cập nhật chậm, build cũng bị chậm
+
+Vite: + Là 1 build tool dùng để khởi tạo react app
+      + link doc: https://vitejs.dev/guide/why.html
+      + Cập nhật nhiều, build nhanh
+      + yarn create vite
+
+NextJS: + Là 1 framework cho frontend
+        + Đã có khung
+

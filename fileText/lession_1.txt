@@ -1,0 +1,9 @@
+Bài 1: Cài đặt môi trường cho dự án: NVM, Node, Git, Yarn, ...
+link ytb: https://www.youtube.com/watch?v=DMnOs7mMzhw&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=4
+
+- Cài đặt môi trường Nodejs, dùng version 18.16.0 để đồng bộ cùng anh Quân
+- Cài đặt nvm để quản lý các version
+- Cài đặt Git, ưu tiên dùng gitbash khi dev
+- Cài đặt Yarn: giúp cài đặt các thư viện nhanh hơn npm rất nhiều
+
+
