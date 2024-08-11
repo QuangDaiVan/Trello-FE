@@ -1,0 +1,8 @@
+Bài 6: ESlint - clean code? Cấu hình ESlint chuẩn dự án thực tế
+link ytb: https://www.youtube.com/watch?v=vhdigVnPQV8&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=10
+
+link doc của ESlint: https://eslint.org/docs/latest/
+link rule của anh Quân: https://github.com/trungquandev/trungquandev-public-utilities-algorithms/tree/main/02-sample-eslint-config-for-react-project
+
+Cài đặt VS extension: ESlint
+Cài đặt rule theo của anh Quân
