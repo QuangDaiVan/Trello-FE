@@ -1,0 +1,14 @@
+Bài 9: Cách import chuẩn các component của MUI để tối ưu dự án
+link ytb: https://www.youtube.com/watch?v=GEanFRMcpgw&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=13
+
+Không dùng import theo dạng object
+Nên dùng theo dạng này: import reactLogo from './assets/react.svg'
+    và không để vượt quá 3 cấp
+
+Thêm rule sau đây vào ESlint :
+        'no-restricted-imports': [
+      'error',
+      {
+        'patterns': ['@mui/*/*/*']
+      }
+    ],
