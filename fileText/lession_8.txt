@@ -1,1 +1,15 @@
-abc
+Bài 8: Cài đặt và sử dụng MUI (Emotion, Fonts, Icons..vv)
+link ytb: https://www.youtube.com/watch?v=AzlvkoGvdK8&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=12
+
+link doc của MUI-style: https://mui.com/material-ui/integrations/styled-components/
+link fonts của google: https://fonts.google.com/
+link icons MUI: https://mui.com/material-ui/icons/
+link icons Google: https://fonts.google.com/icons?icon.set=Material+Icons
+
+các thư viện cài đặt ngày hôm nay:
+    yarn add @mui/material@^5.13.0
+    yarn add @emotion/react@^11.11.0
+    yarn add @emotion/styled@^11.11.0
+    yarn add @mui/icons-material@^5.11.16
+
+cài đặt font cho trang web bằng thẻ link trong file index.html ngoài cùng
