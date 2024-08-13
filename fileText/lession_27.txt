@@ -1,3 +1,4 @@
 Bài 27: Cấu trúc dự án chuyên sâu (Board - Columns - Cards)
 link ytb: https://www.youtube.com/watch?v=SfZA6lwDVsw&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=31
 
+Đặt tên các file lồng cấp trùng tên với folder

@@ -1,4 +1,4 @@
 
 
 
-hiện còn lỗi hover và responsive chưa xong
+

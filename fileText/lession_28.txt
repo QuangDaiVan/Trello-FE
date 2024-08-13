@@ -1,0 +1,5 @@
+Bài 28: Tạo Mock Data, áp dụng thuật toán sắp xếp mảng dựa trên 1 mảng khác
+link ytb: https://www.youtube.com/watch?v=4Hy9FsfQX10&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=32
+
+mock data: là 1 dạng data mẫu đã viết sẵn
+cú pháp ?. : gọi là optional chaining, thay cho codition của if
