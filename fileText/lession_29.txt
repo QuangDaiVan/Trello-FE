@@ -1,0 +1,7 @@
+Bài 29: Kinh nghiệm chọn thư viện kéo thả cho dự án | Dnd-kit |
+link ytb: https://www.youtube.com/watch?v=XohjgFkvdUg&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=33
+
+link dnd: https://dndkit.com/
+    drag and drop
+
+bài học này ko có code, chỉ là giới thiệu cho bài tiếp theo
