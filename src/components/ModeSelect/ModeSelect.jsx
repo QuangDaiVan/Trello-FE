@@ -36,9 +36,9 @@ function ModeSelect() {
         onChange={handleChange}
         sx={{
           color: 'white',
-          '.MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+          '.MuiInputBase-root': { borderColor: 'white' },
+          '&:hover .MuiInputBase-root': { borderColor: 'white' },
+          '&.Mui-focused .MuiInputBase-root': { borderColor: 'white' },
           '.MuiSvgIcon-root': { color: 'white' }
         }}
       >

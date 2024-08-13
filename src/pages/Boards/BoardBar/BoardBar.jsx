@@ -29,7 +29,7 @@ const MENU_STYLE = {
 function BoardBar() {
   return (
     <Box sx={{
-      // display: { xs: 'none', md: 'flex', gap: 1 },
+      display: { xs: 'none', md: 'flex', gap: 1 },
       width: '100%',
       height: (theme) => theme.trello.boardBarHeight,
       display: 'flex',
@@ -37,7 +37,7 @@ function BoardBar() {
       justifyContent: 'space-between',
       gap: 2,
       padding: 2,
-      // overflowX: 'auto',
+      overflowX: 'auto',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
 
     }}>
