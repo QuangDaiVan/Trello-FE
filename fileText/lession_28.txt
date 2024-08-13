@@ -3,3 +3,5 @@ link ytb: https://www.youtube.com/watch?v=4Hy9FsfQX10&list=PLP6tw4Zpj-RJP2-Yrhtk
 
 mock data: là 1 dạng data mẫu đã viết sẵn
 cú pháp ?. : gọi là optional chaining, thay cho codition của if
+
+Nhớ đọc lại và hiểu rõ thuật toán sort
