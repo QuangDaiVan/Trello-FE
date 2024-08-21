@@ -1,8 +1,24 @@
 import Box from '@mui/material/Box'
 import ListColumns from './ListColumns/ListColumns'
 import { mapOrder } from '~/utils/sorts'
-import { DndContext, /*PointerSensor,*/ useSensor, useSensors, MouseSensor, TouchSensor, DragOverlay, defaultDropAnimationSideEffects, closestCorners } from '@dnd-kit/core'
-import { useEffect, useState } from 'react'
+import {
+  DndContext,
+  /*PointerSensor,*/
+  useSensor,
+  useSensors,
+  MouseSensor,
+  TouchSensor,
+  DragOverlay,
+  defaultDropAnimationSideEffects,
+  closestCorners,
+  closestCenter,
+  pointerWithin,
+  rectIntersection,
+  getFirstCollision
+}
+  from '@dnd-kit/core'
+
+import { useCallback, useEffect, useState, useRef } from 'react'
 import { arrayMove } from '@dnd-kit/sortable'
 import Column from './ListColumns/Column/Column'
 import Card from './ListColumns/Column/ListCards/Card/Card'
@@ -35,6 +51,9 @@ function BoardContent({ board }) {
   const [activeDragItemIdType, setActiveDragItemIdType] = useState([null])
   const [activeDragItemIdData, setActiveDragItemIdData] = useState([null])
   const [oldColumnWhenDraggingCard, setOldColumnWhenDraggingCard] = useState([null])
+
+  // điểm va chạm cuối cùng (xử lý thuật toán phát hiện va chạm)
+  const lastOverId = useRef(null)
 
   useEffect(() => {
     const orderedColumns = mapOrder(board?.columns, board?.columnOrderIds, '_id')
@@ -115,7 +134,7 @@ function BoardContent({ board }) {
     }
   }
 
-  //quá trình kéo 1 phần tử
+  // quá trình kéo 1 phần tử
   const handleDragOver = (event) => {
     // không làm gì thêm nếu đang kéo column
     if (activeDragItemIdType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) return
@@ -242,9 +261,50 @@ function BoardContent({ board }) {
   }
 
   // Animation khi thả phần tử: test bằng cách kéo xong thả trực tiếp và nhìn phần giữ chỗ overlay
+  // args: arguments = các đối số, tham số
   const customDropAnimation = {
     sideEffects: defaultDropAnimationSideEffects({ styles: { active: { opacity: '0.5' } } })
   }
+
+  const collisionDetectionStrategy = useCallback((args) => {
+    // trường hợp kéo column thì dùng thuật toán closestConners là chuẩn nhất
+    if (activeDragItemIdType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) {
+      return closestCorners({ ...args })
+    }
+
+    // tìm các điểm giao nhau, va chạm - intersections với con trỏ
+    const pointerIntersections = pointerWithin(args)
+
+    // thuật toán phát hiện va chạm sẽ trả về 1 mảng va chạm ở đây
+    const intersections = !!pointerIntersections?.length ? pointerIntersections : rectIntersection(args)
+
+    //tìm cái overId đầu tiên trong đám intersections ở trên
+    let overId = getFirstCollision(intersections, 'id')
+
+    if (overId) {
+      // fix vụ flickering
+      // nếu cái over nó là column thì sẽ tìm tới cái cardId gần nhất bên trong khu vực va chạm đó dựa vào
+      // thuật toán phát hiện va chạm closestCenter hoặc closestConners đều được.
+      // tuy nhiên ở đây dùng closestCenter sẽ mượt mà hơn
+
+      const checkColumn = orderedColumnsState.find(column => column._id === overId)
+      if (checkColumn) {
+        // console.log('overId before: ', overId)
+        overId = closestCenter({
+          ...args,
+          droppableContainers: args.droppableContainers.filter(container => {
+            return (container.id !== overId) && (checkColumn?.cardOrderIds?.includes(container.id))
+          })
+        })[0]?.id
+        // console.log('overId after: ', overId)
+
+      }
+
+      lastOverId.current = overId
+      return [{ id: overId }]
+    }
+    return lastOverId.current ? [{ id: lastOverId.current }] : []
+  }, [activeDragItemIdType, orderedColumnsState])
 
   return (
     <DndContext
@@ -252,7 +312,10 @@ function BoardContent({ board }) {
       sensors={sensors}
       // thuật toán phát hiện va chạm giúp card và cover lớn có thể kéo qua column khác được
       // vì bị conflict giữa card và column
-      collisionDetection={closestCorners}
+
+      // nếu chỉ dùng closestCorners sẽ có bug flickering + sai lệch dữ liệu
+      // collisionDetection={closestCorners}
+      collisionDetection={collisionDetectionStrategy}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
