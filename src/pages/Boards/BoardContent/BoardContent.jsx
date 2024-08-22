@@ -11,9 +11,9 @@ import {
   DragOverlay,
   defaultDropAnimationSideEffects,
   closestCorners,
-  closestCenter,
+  // closestCenter,
   pointerWithin,
-  rectIntersection,
+  // rectIntersection,
   getFirstCollision
 }
   from '@dnd-kit/core'
@@ -275,11 +275,16 @@ function BoardContent({ board }) {
     // tìm các điểm giao nhau, va chạm - intersections với con trỏ
     const pointerIntersections = pointerWithin(args)
 
-    // thuật toán phát hiện va chạm sẽ trả về 1 mảng va chạm ở đây
-    const intersections = !!pointerIntersections?.length ? pointerIntersections : rectIntersection(args)
+    // fix triệt để cái bug flickering của thư viện dnd-kit
+    // nếu pointerIntersections là mảng rỗng, return luôn không làm j hết
+    // kéo 1 cái card có image cover lớn và kéo lên phía trên cùng ra khỏi khu vực kéo thả
+    if (!pointerIntersections?.length) return
+
+    // thuật toán phát hiện va chạm sẽ trả về 1 mảng va chạm ở đây ( hiện ko cần thiết)
+    // const intersections = !!pointerIntersections?.length ? pointerIntersections : rectIntersection(args)
 
     //tìm cái overId đầu tiên trong đám intersections ở trên
-    let overId = getFirstCollision(intersections, 'id')
+    let overId = getFirstCollision(pointerIntersections, 'id')
 
     if (overId) {
       // fix vụ flickering
@@ -290,7 +295,7 @@ function BoardContent({ board }) {
       const checkColumn = orderedColumnsState.find(column => column._id === overId)
       if (checkColumn) {
         // console.log('overId before: ', overId)
-        overId = closestCenter({
+        overId = closestCorners({
           ...args,
           droppableContainers: args.droppableContainers.filter(container => {
             return (container.id !== overId) && (checkColumn?.cardOrderIds?.includes(container.id))
